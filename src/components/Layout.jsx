@@ -1,7 +1,6 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 
-// ⚠️ PENTING: Jangan tambahkan kata 'async' di baris ini!
-// ✅ BENAR: export default function Layout() { ... }
+// export default function Layout()
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ export default function Layout() {
     }
   };
 
-  // Daftar Menu Sidebar (Sudah termasuk Kategori & Supplier)
+  // Daftar Menu Sidebar
   const menus = [
     { path: "/", label: "🏠 Dashboard" },
     { path: "/katalog", label: "📦 Data Barang" },
@@ -63,7 +62,6 @@ export default function Layout() {
 
       {/* --- KONTEN KANAN --- */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Header Mobile (Hanya muncul di HP) */}
         <header className="bg-white shadow-sm p-4 flex justify-between items-center md:hidden z-20">
           <span className="font-bold text-lg text-primary">GudangPro</span>
           <button
@@ -75,7 +73,6 @@ export default function Layout() {
         </header>
 
         {/* AREA UTAMA (Outlet) */}
-        {/* Di sinilah halaman Dashboard, Kategori, Kasir, dll akan muncul */}
         <main className="flex-1 overflow-y-auto bg-base-200 relative">
           <Outlet />
         </main>
