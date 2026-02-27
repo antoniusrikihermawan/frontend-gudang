@@ -13,14 +13,13 @@ export const AuthProvider = ({ children }) => {
     const loadUser = async () => {
       if (token) {
         try {
-          // Coba ambil profile user dari backend
-          // Jika backend belum siap handle profile, kita bisa mock dulu atau handle error
+          // try to get user profil to backend
           try {
              const res = await getProfile();
              setUser(res.data);
           } catch (err) {
             console.warn("Gagal load profile, mungkin endpoint belum siap. Asumsi user aktif.");
-            setUser({ username: "admin", role: "admin" }); // Fallback sementara
+            setUser({ username: "admin", role: "admin" }); 
           }
         } catch (error) {
           console.error("Auth error", error);
@@ -39,7 +38,6 @@ export const AuthProvider = ({ children }) => {
       const newToken = res.data.token;
       localStorage.setItem("token", newToken);
       setToken(newToken);
-      // setUser akan di-trigger oleh useEffect di atas atau bisa set manual disini
       return true;
     } catch (error) {
       throw error;
